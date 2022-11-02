@@ -7,7 +7,7 @@ html,body {
     padding-top: 1em;
     text-align: center;
     background-color: rgb(237, 234, 29);;
-    /* background-image: url('../img/dungeonhell.png'); */
+    background-image: url('../images/CatDemon_Spritesheet.png');
     background-size: cover;
     background-repeat: space;
   }
@@ -47,6 +47,7 @@ html,body {
     justify-content: center;
     align-items: center;
     background-color: white;
+    background-image: url('../images/funky-lines.png');
   }
   
   #top-left-opperations {
