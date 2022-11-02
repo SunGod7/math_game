@@ -31,4 +31,35 @@ function main(){
 //  ctx.arc(400, 300, 90, 0, Math.PI = 2, false);
 //  ctx.strokeStyle = 'red'
 //  ctx.stroke()
+ 
+
+ function drawRec(x, y) {
+
+
+    const size1 = 55
+    const size2 = 34
+    
+    ctx.fillStyle = 'blue'
+    ctx.strokeStyle = 'green'
+    ctx.lineWidth = 5
+
+    ctx.fillRect(x, y, size1, size2)
+    ctx.strokeRect(x, y, size1, size2)
  }
+
+ canvas.addEventListener('click', function(event) {
+    console.log('mouse clicked. event')
+    console.log(event)
+    drawRec(event.offsetX, event.offsetY)
+
+ })
+
+ function clearCanvas() {
+    ctx.clearRect(0, 0, ctx.width, ctx.height)
+ }
+
+ document.getElementById('clear').addEventListener('click', function() {
+    clearCanvas()
+ })
+
+}

@@ -1,6 +1,91 @@
-body {
-background-color:blueviolet
-}
-#easel {
-    background-color: navy
+html,body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    padding-top: 1em;
+    text-align: center;
+    background-color: rgb(237, 234, 29);;
+    /* background-image: url('../img/dungeonhell.png'); */
+    background-size: cover;
+    background-repeat: space;
+  }
+  
+  h1, h2 {
+    font-family: 'Press Start 2P', monospace;
+    /* font-family: monospace; */
+    color: rgba(15, 88, 224, 0.92);
+    
+  }
+  
+  canvas {
+    /* background-image: url('../img/stone.png'); */
+    /* background-repeat: repeat; */
+    background-color: rgb(63, 204, 239);
+    width: 100%;
+    height: 100;
+  }
+  
+  #container {
+  max-width: 50em;
+  /* height: 70vh; */
+  background-color: #04AA6D;
+  margin: 0 auto;
+  padding: 1em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: .5fr .5fr .25fr;
+  grid-template-columns: .25fr .5fr .25fr;
+  grid-template-areas: "top-left-opperations top-left-opperations top-left-opperations"
+                        "game game game"
+                        "btm-left-gameOver btm-right-gameWon btm-right-gameWon";
+  }
+  
+  #top-left-opperations, #btm-right-gameWon, #btm-left-gameOver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+  
+  #top-left-opperations {
+    grid-area: top-left-opperations;
+  }
+  
+  /* #top-right {
+    grid-area: top-right; */
+    /* background-color: #222; */
+    /* background-image: url('../img/funky-lines.png'); */
+  /* } */
+  
+  main {
+    grid-area: game;
+  }
+  
+  
+  #btm-left-gameOver {
+    grid-area: btm-left-gameOver;
+    /* background-color: #222; */
+  }
+  
+  #btm-right-gameWon {
+    grid-area: btm-right-gameWon;
+    /* background-color: #222; */
+  }
+  /* button {
+    font-size: 25;
+    padding: 50;
+  }  */
+  #startBtn {
+    border-radius: 45%;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
 }
