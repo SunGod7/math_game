@@ -90,3 +90,12 @@ html,body {
     font-size: 16px;
     margin: 4px 2px;
 }
+
+#scoreBrd {
+    font-size: 20px;
+    color: white;
+}
+
+#timeDisplay {
+    color:red; 
+}
