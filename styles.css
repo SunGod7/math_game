@@ -28,8 +28,8 @@ html,body {
   }
   
   #container {
-  max-width: 50em;
-  /* height: 70vh; */
+  max-width: 500em;
+  height: 50vh;
   background-color: #04AA6D;
   margin: 0 auto;
   padding: 1em;
