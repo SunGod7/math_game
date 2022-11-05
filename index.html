@@ -11,22 +11,31 @@
 </head>
 
 <body>
-     <h1>KAT KNAP</h1> 
+    <h1>KAT KNAP</h1>
     <!-- <button id="clear">Clear Canvas</button> -->
     <button id="startBtn" onclick="startGame()">START</button>
-        <div id="timeDisplay" hidden>Time left: 25</div>
-        <div id="scoreBrd">current score: 0</div>
+    <div id="timeDisplay" hidden>Time left: 25</div>
+    <div id="scoreBrd">current score: 0</div>
     <div id="container">
         <aside id="top-left-opperations"></aside>
-        
+
         <main>
             <canvas id="canvas"></canvas>
         </main>
-        <aside id="btm-left-gameOver"><h2>whats ?</h2></aside>
-        <aside id="btm-right-gameWon"><h2>whats the answer ?</h2></aside>
-        
-    </div>
+        <aside id="btm-left-gameOver">
+            <h2></h2>
+        </aside>
+        <aside id="btm-right-gameWon">
+            <h2>whats the answer ?</h2>
+        </aside>
 
+    </div>
+    <button id="resetButton" onclick="reStart()">Reset</button>
+    <br>
+    <button onclick="checkAnswer(1)" id="ansBtn1"></button>
+    <button onclick="checkAnswer(2)" id="ansBtn2"></button>
+    <button onclick="checkAnswer(3)" id="ansBtn3"></button>
+    <button onclick="checkAnswer(4)" id="ansBtn4"></button>
     <script src="./app.js" defer></script>
 </body>
 

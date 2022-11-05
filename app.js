@@ -1,13 +1,17 @@
 const game = document.getElementById('canvas')
 const ctx = game.getContext('2d');
-
-
+//------------------------------------------------//
+const ansOne = document.getElementById('ansBtn1')
+const ansTwo = document.getElementById('ansBtn2')
+const ansThree = document.getElementById('ansBtn3')
+const ansFour = document.getElementById('ansBtn4')
+const reSetBtn = document.getElementById('resetButton')
+//------------------------------------------------//
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
 
 console.log('width', game.width)
-
 console.log('height', game.height)
 
 
@@ -28,8 +32,7 @@ class Crawler {
       }
    }
 }
-// let player = new Crawler(10, 10, 'lightsteelblue', 16, 16)
-// let catOne = new Crawler(200, 50, '#bada55', 32, 48)
+
 let catOne = new Crawler(200, 50, 'red', 32, 48)
 let player = new Crawler(20, 20, '#bada55', 16, 14)
 
@@ -93,72 +96,131 @@ const detectHit = () => {
            // console.log('we have a hit')
            // if a hit occurs, player dies 
            player.alive = false
+           document.getElementById("btm-left-gameOver").textContent = 'You lose!!!!'
          //   document.getElementById('status').textContent = 'You Win!'
+         
        }
+      
 }
 
-// document.addEventListener('DOMContentLoaded', main)
-
-// function main(){
-//     const  canvas = document.getElementById('easel')
-//     const ctx = canvas.getContext('2d');
-//     canvas.setAttribute('width', '800')
-//     canvas.setAttribute('height', '800')
-    
+console.log(game)
 
 
+document.getElementById("ansBtn1").style.padding = "15px";
+ansBtn1.style.backgroundColor = "red"; 
 
-//     ctx.width = canvas.width
-//     ctx.height= canvas.height
+document.getElementById("ansBtn2").style.padding = "15px";
+ansBtn2.style.backgroundColor = "lightblue";
+
+document.getElementById("ansBtn3").style.padding = "15px";
+ansBtn3.style.backgroundColor = "green";
+
+document.getElementById("ansBtn4").style.padding = "15px";
+ansBtn4.style.backgroundColor = "pink";
+
+// document.getElementById("btm-right-gameWon").style.backgroundColor = "white";
+// document.getElementById("top-left-opperations").style.backgroundColor = "white";
+// document.getElementById("btm-left-gameOver").style.backgroundColor = "white";
+//global variables
+let timeLeft = 25;
+let timerInterval;
+let correctAnswer = 0;
+let score = 0;
+let gameWon = 35;
+let gameOver = score < 35;
+let gameOn = false;
+
+function startGame(){
 
 
-//     ctx.fillStyle = 'black'
-//     ctx.strokeStyle = 'red'
-//     ctx.lineWidth = 5
+document.getElementById("startBtn").disabled = true;
 
-//     let x = 100
-//     let y = 150
-//     let wid = 200
-//     let hei = 300
+  nextQuestion()
+    //sets timer
+    let timeDisplay = document.getElementById("timeDisplay");
+    timeDisplay.hidden = false
 
-//     ctx.fillRect(x, y, wid, hei)
-//     ctx.strokeRect(x, y, wid, hei)
-    //ctx.fillRect(50, 50, 80, 80)
-//     ctx.strokeRect(10, 10, 80, 80)
-
-//  ctx.beginPath()
-//  ctx.arc(400, 300, 90, 0, Math.PI = 2, false);
-//  ctx.strokeStyle = 'red'
-//  ctx.stroke()
- 
-
-//  function drawRec(x, y) {
+    timerInterval = setInterval(function() {
+    timeLeft -= 1;
+    timeDisplay.innerHTML = "Time left: " + timeLeft;
 
 
-//     const size1 = 55
-//     const size2 = 34
-    
-//     ctx.fillStyle = 'blue'
-//     ctx.strokeStyle = 'green'
-//     ctx.lineWidth = 5
 
-//     ctx.fillRect(x, y, size1, size2)
-//     ctx.strokeRect(x, y, size1, size2)
-//  }
+    // stops timer
+    if (timeLeft == 0 || score == gameWon) {
+        clearInterval(timerInterval);
 
-//  canvas.addEventListener('click', function(event) {
-//     console.log('mouse clicked. event')
-//     console.log(event)
-//     drawRec(event.offsetX, event.offsetY)
 
-//  })
+     } 
 
-//  function clearCanvas() {
-//     ctx.clearRect(0, 0, ctx.width, ctx.height)
-//  }
 
-//  document.getElementById('clear').addEventListener('click', function() {
-//     clearCanvas()
-//  })
 
-// }
+
+      if (timeLeft == 0) { 
+          let YouLose = document.getElementById("btm-left-gameOver").textContent = 'You lose!!!!'
+          console.log(YouLose)
+    }
+
+  },1000)
+}
+
+//creates random #'s for questions 
+function nextQuestion() {
+  let opperationsDiv = document.getElementById("top-left-opperations");
+  let numOne = Math.floor(Math.random() * 12);
+  let numTwo = Math.floor(Math.random() * 12);
+  correctAnswer = numOne * numTwo;
+  opperationsDiv.innerHTML = numOne + "*" + numTwo;
+
+
+  let wrongAnswer1 = Math.floor(Math.random() * 12) * Math.floor(Math.random() * 12);
+  let wrongAnswer2 = Math.floor(Math.random() * 12) * Math.floor(Math.random() * 12);
+  let wrongAnswer3 = Math.floor(Math.random() * 12) * Math.floor(Math.random() * 12);
+  let wrongAnswer4 = Math.floor(Math.random() * 12) * Math.floor(Math.random() * 12);
+
+  document.getElementById("ansBtn1").innerHTML = wrongAnswer1
+  document.getElementById("ansBtn2").innerHTML = wrongAnswer2
+  document.getElementById("ansBtn3").innerHTML = wrongAnswer3
+  document.getElementById("ansBtn4").innerHTML = wrongAnswer4
+
+  let correctAnswerIndex = Math.floor(Math.random()*4)+1;
+  let correctAnswerID = "ansBtn" + correctAnswerIndex;
+  document.getElementById(correctAnswerID).innerHTML = correctAnswer;
+
+}
+//make right answer appear on button
+function checkAnswer(btnIndex) {
+
+     let answer = document.getElementById("ansBtn" + btnIndex).innerHTML;
+     if (answer == correctAnswer) score += 5;
+
+     document.getElementById("scoreBrd").innerHTML = "current score: " + score;
+     nextQuestion()
+
+     if (score == gameWon) {
+
+      console.log("btm-right-gameWon")
+      document.getElementById("btm-right-gameWon").textContent = 'Your Free!!!!'
+
+     } 
+}
+
+
+const reStart = () => {
+   startBtn.disabled = false;
+   clearInterval(timerInterval);
+   timeLeft = 26;
+    player.alive = true
+    //startGame()
+    gameOn = true;
+    score = 0;
+    document.getElementById("scoreBrd").innerText = ''
+    document.getElementById("btm-right-gameWon").innerText = ''
+    document.getElementById("btm-left-gameOver").innerText = ''
+    document.getElementById("ansBtn1").innerText = ''
+    document.getElementById("ansBtn2").innerText = ''
+    document.getElementById("ansBtn3").innerText = ''
+    document.getElementById("ansBtn4").innerText = ''
+    document.getElementById("top-left-opperations").innerText = ''
+    document.getElementById("timeDisplay").innerText = ''
+ }
