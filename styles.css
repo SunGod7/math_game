@@ -10,6 +10,11 @@ html,body {
     background-image: url('../images/CatDemon_Spritesheet.png');
     background-size: cover;
     background-repeat: space;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    max-width: 500em;
+    height: 70vh;
   }
   
   h1, h2 {
@@ -24,35 +29,49 @@ html,body {
     /* background-repeat: repeat; */
     background-color: rgb(63, 204, 239);
     width: 100%;
-    height: 100;
+    height: 500px;
+    border: 4px solid black;
+    display: flex;
+    /* margin: 20 auto; */
     /* background-image: url('../img/stone.png'); */
   }
   
-  #container {
+  /* #container {
   max-width: 500em;
   height: 70vh;
   background-color: #04AA6D;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 1em;
   display: grid;
-  grid-gap: 1em;
-  grid-template-rows: .5fr .5fr .25fr;
+  
+  
+  grid-template-rows: .25fr .5fr .25fr;
   grid-template-columns: .25fr .5fr .25fr;
   grid-template-areas: "top-left-opperations top-left-opperations top-left-opperations"
                         "game game game"
                         "btm-left-gameOver btm-right-gameWon btm-right-gameWon";
-  }
+  } */
   
-  #top-left-opperations, #btm-right-gameWon, #btm-left-gameOver {
+  /* #top-left-opperations,*/ #btm-right-gameWon, #btm-left-gameOver { 
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     background-image: url('../images/funky-lines.png');
+    margin: 5px auto;
+    border: 4px solid black;
   }
   
   #top-left-opperations {
-    grid-area: top-left-opperations;
+    margin: 5px auto;
+    border: 4px solid rgb(221, 232, 225);
+    width: 20%;
+    height: 35px;
+    background-color: rgb(96, 244, 111);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* grid-area: top-left-opperations; */
   }
   
   /* #top-right {
@@ -61,9 +80,9 @@ html,body {
     /* background-image: url('../img/funky-lines.png'); */
   /* } */
   
-  main {
+  /* main {
     grid-area: game;
-  }
+  } */
   
   
   #btm-left-gameOver {

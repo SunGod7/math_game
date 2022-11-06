@@ -15,15 +15,36 @@ console.log('width', game.width)
 console.log('height', game.height)
 
 
-class Crawler {
+// class Crawler {
 
 
-   constructor(x, y, color, width, height) {
+//    constructor(x, y, color, width, height) {
+//       this.x = x,
+//       this.y = y,
+//       this.color = color,
+//       this.width = width,
+//       this.height = height,
+//       this.alive = true,
+
+//       this.render = function () {
+//          ctx.fillStyle = this.color
+//          ctx.fillRect(this.x, this.y, this.width, this.height)
+//       }
+//    }
+// }
+
+
+//------------------------------------------------//
+class KatCrawler {
+
+
+   constructor(x, y, color, width, height, type) {
       this.x = x,
       this.y = y,
       this.color = color,
       this.width = width,
       this.height = height,
+      this.type = type,
       this.alive = true,
 
       this.render = function () {
@@ -33,8 +54,34 @@ class Crawler {
    }
 }
 
-let catOne = new Crawler(200, 50, 'red', 32, 48)
-let player = new Crawler(20, 20, '#bada55', 16, 14)
+//------------------------------------------------//
+class DoggyCrawler {
+
+
+   constructor(x, y, color, width, height, type) {
+      this.x = x,
+      this.y = y,
+      this.color = color,
+      this.width = width,
+      this.height = height,
+      this.alive = true,
+
+      this.speed = 15,
+      this.direction = {
+         up: false,
+         down: false,
+         left: false,
+         right: false
+      }
+      this.render = function () {
+         ctx.fillStyle = this.color
+         ctx.fillRect(this.x, this.y, this.width, this.height)
+      }
+   }
+}
+
+let kat = new KatCrawler(200, 50, 'red', 32, 48, kat)
+let player = new DoggyCrawler(20, 20, '#bada55', 16, 14)
 
 const gameLoop = () => {
    
@@ -42,7 +89,7 @@ const gameLoop = () => {
       detectHit()
   }
   ctx.clearRect(0, 0, game.width, game.height)
-  catOne.render()
+  kat.render()
 
    
    if (player.alive) {
@@ -88,10 +135,10 @@ const movementHandler = (e) => {
 const detectHit = () => {
    // we'll use one big if statement that clearly defines any moment of collision.
    // that means utilizing, x, y, width and height of our objects
-   if (player.x < catOne.x + catOne.width
-       && player.x + player.width > catOne.x
-       && player.y < catOne.y + catOne.height
-       && player.y + player.height > catOne.y) {
+   if (player.x < kat.x + kat.width
+       && player.x + player.width > kat.x
+       && player.y < kat.y + kat.height
+       && player.y + player.height > kat.y) {
            // here we can see if the hit happens at the right time
            // console.log('we have a hit')
            // if a hit occurs, player dies 
